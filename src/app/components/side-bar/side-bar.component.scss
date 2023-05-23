@@ -2,14 +2,14 @@
   a {
     color: white;
     text-decoration: none;
-transition: 0.3s;
+    transition: 0.3s;
   }
   a:hover{
     scale: 1.1;
     transition: 0.3s;
   }
   a:active{
-    color: brown;
+    color: #FFC107;
     transition: .3s;
   }
 }

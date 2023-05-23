@@ -1,11 +1,14 @@
-<h4>hello world</h4>
-
-
+<div class="title" *ngIf="specialty">
+  <h2>Specialty is {{specialty}}</h2>
+</div>
 <div *ngIf="doctorsBySpecialty">
-  <div *ngFor="let doctor of doctorsBySpecialty">
-    <div>{{doctor.name}}</div>
-    <div>{{doctor.phone}}</div>
-    <div>{{doctor.isDoctor}}</div>
+  <div *ngFor="let doctor of doctorsBySpecialty" class="doctor-item">
+    <div class="name">{{doctor.name}}</div>
     <div>{{doctor.email}}</div>
+    <div>{{doctor.phone}}</div>
+    <div>{{doctor.gender}}</div>
+    <div>{{doctor.birth}}</div>
+    <div>{{doctor.specialty}}</div>
+    <button class="btn btn-success">Go to admission timetable</button>
   </div>
 </div>
