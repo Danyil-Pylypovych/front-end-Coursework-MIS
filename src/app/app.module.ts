@@ -19,7 +19,8 @@ import { MainlayoutComponent } from './mainlayout/mainlayout.component';
 import { PrivateCabinetComponent } from './components/private-cabinet/private-cabinet.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
 
 const appRoute: Routes = [
   {path: '', component: HomeComponent},
@@ -47,7 +48,9 @@ const appRoute: Routes = [
     RouterModule.forRoot(appRoute),
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTreeModule,
+    MatIconModule,
   ],
   providers: [CheckFormService, AuthService],
   bootstrap: [AppComponent]
