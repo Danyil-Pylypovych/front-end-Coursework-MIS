@@ -3,12 +3,13 @@
 </div>
 <div *ngIf="doctorsBySpecialty">
   <div *ngFor="let doctor of doctorsBySpecialty" class="doctor-item">
-    <div class="name">{{doctor.name}}</div>
-    <div>{{doctor.email}}</div>
-    <div>{{doctor.phone}}</div>
-    <div>{{doctor.gender}}</div>
-    <div>{{doctor.birth}}</div>
-    <div>{{doctor.specialty}}</div>
-    <button class="btn btn-success">Go to admission timetable</button>
+    <h2 class="name">{{doctor.name}}</h2>
+    <h4>{{doctor.email}}</h4>
+    <h4>{{doctor.phone}}</h4>
+    <h4>{{doctor.gender}}</h4>
+    <h4>{{doctor.birth}}</h4>
+    <h4>{{doctor.specialty}}</h4>
+    <button class="btn btn-success" (click)="chooseList(doctor._id)">Go to admission timetable</button>
+    <app-timetable [doctor]="doctor" *ngIf="isVisibleList && doctorId === doctor._id"></app-timetable>
   </div>
 </div>

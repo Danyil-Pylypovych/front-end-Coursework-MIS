@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 interface FoodNode {
   name: string;
   children?: FoodNode[];
-  value?:string;
+  value?: string;
 }
 
 const TREE_DATA: FoodNode[] = [
@@ -45,7 +45,7 @@ interface ExampleFlatNode {
 })
 export class SideBarComponent {
 
-  constructor(private router:Router) {
+  constructor(private router: Router) {
     this.dataSource.data = TREE_DATA;
   }
 
@@ -72,11 +72,16 @@ export class SideBarComponent {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
 
-
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
-  onClickLink(value:string):void {
-    console.log(value,123)
-    this.router.navigate(['cabinet/doctorList'], {queryParams:{specialty:value.toLowerCase()}})
+  onClickLink(value: string): void {
+
+    if (value === 'Last visit' || value === 'All history') {
+      console.log(value)
+      this.router.navigate(['cabinet/cardList'], {queryParams: {period: value}})
+    } else {
+      console.log(value, '00000000000')
+      this.router.navigate(['cabinet/doctorList'], {queryParams: {specialty: value.toLowerCase()}})
+    }
   }
 }

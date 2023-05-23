@@ -10,19 +10,20 @@ import { urls } from '../configs';
 export class UserCardService {
 
   constructor(private httpClient: HttpClient) { }
-  
+
   createUserCard(clientId: string, userCardObj: IUserCard):Observable<IUserCard> {
     return this.httpClient.post<IUserCard>(urls.user.createClientCard + '/' + clientId, userCardObj);
   };
-  
+
   //todo
   // getAllUserCards(token: string):Observable<IUserCard[]> {
   //   return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll, token);
   // };
 
   getAllUserCardsByUserId(clientId: string):Observable<IUserCard[]> {
+    console.log(clientId, 'clientId')
     return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll + '/' + clientId);
   };
-  
-  
+
+
 }

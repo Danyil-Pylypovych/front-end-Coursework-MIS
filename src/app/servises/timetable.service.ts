@@ -16,7 +16,8 @@ export class TimetableService {
   };
 
   getByParams(params: Object):Observable<ITimetable[]> {
-    return this.httpClient.get<ITimetable[]>(urls.timetable.url, params);
+    console.log(params)
+    return this.httpClient.post<ITimetable[]>(urls.timetable.url, params);
   };
 
   updateTimetable(patientId: string, timetable: ITimetable):Observable<ITimetable> {

@@ -11,6 +11,8 @@ import {IUser} from "../../interfaces";
 export class DoctorListComponent implements OnInit, AfterViewInit {
   specialty: string;
   doctorsBySpecialty: IUser[];
+  doctorId: string;
+  isVisibleList: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService) {
@@ -24,7 +26,7 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.activatedRoute.params.subscribe(({specialty}) => {
-        console.log(specialty)
+      console.log(specialty)
       if (specialty !== this.specialty) {
         this.getDoctorBySpecialty();
       }
@@ -32,7 +34,7 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
     })
   };
 
-  getDoctorBySpecialty():void {
+  getDoctorBySpecialty(): void {
     this.userService.getUsersByParams({specialty: this.specialty}).subscribe({
       next: (value) => {
         this.doctorsBySpecialty = value;
@@ -40,4 +42,9 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
       error: (e) => console.log(e)
     })
   };
+
+  chooseList(doctorId: string): void {
+    this.isVisibleList = !this.isVisibleList;
+    this.doctorId = doctorId;
+  }
 }

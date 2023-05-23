@@ -1,1 +1,21 @@
-<p>card-list works!</p>
+<div>
+  <h2>{{isFullPeriod ? 'Patient Cards' : 'Patient Card'}}</h2>
+  <div *ngIf="userCards">
+    <div *ngIf="isFullPeriod">
+      <div *ngFor="let card of userCards">
+        <h4>{{card.createdAt.split('.')[0].split('T')}}</h4>
+        <h4>Diagnosis: {{card.diagnosis}}</h4>
+        <h4>Prescription: {{card.prescription}}</h4>
+        <h4>Referral: {{card.referral}}</h4>
+        <hr>
+      </div>
+    </div>
+    <div *ngIf="!isFullPeriod">
+      <h4>{{userCards[userCards.length-1].createdAt.split('.')[0].split('T')}}</h4>
+      <h4>Diagnosis: {{userCards[userCards.length-1].diagnosis}}</h4>
+      <h4>Prescription: {{userCards[userCards.length-1].prescription}}</h4>
+      <h4>Referral: {{userCards[userCards.length-1].referral}}</h4>
+      <hr>
+    </div>
+  </div>
+</div>
