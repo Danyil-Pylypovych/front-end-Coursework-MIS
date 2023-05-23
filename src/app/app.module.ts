@@ -21,6 +21,10 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from "@angular/material/button";
+import { DoctorListComponent } from './components/doctor-list/doctor-list.component';
+import { TimetableComponent } from './components/timetable/timetable.component';
+import { CardListComponent } from './components/card-list/card-list.component';
 
 const appRoute: Routes = [
   {path: '', component: HomeComponent},
@@ -40,7 +44,10 @@ const appRoute: Routes = [
     FooterComponent,
     MainlayoutComponent,
     PrivateCabinetComponent,
-    SideBarComponent
+    SideBarComponent,
+    DoctorListComponent,
+    TimetableComponent,
+    CardListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +58,7 @@ const appRoute: Routes = [
     BrowserAnimationsModule,
     MatTreeModule,
     MatIconModule,
+    MatButtonModule,
   ],
   providers: [CheckFormService, AuthService],
   bootstrap: [AppComponent]

@@ -1,29 +1,36 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces';
-import { Observable } from 'rxjs';
-import { urls } from '../configs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {IUser} from '../interfaces';
+import {Observable} from 'rxjs';
+import {urls} from '../configs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  createUser(userObj: IUser):Observable<IUser> {
+  createUser(userObj: IUser): Observable<IUser> {
     return this.httpClient.post<IUser>(urls.auth.signup, userObj);
   };
 
-  getAllUsers():Observable<IUser[]> {
+  getAllUsers(): Observable<IUser[]> {
     return this.httpClient.get<IUser[]>(urls.user.url);
   };
 
-  updateUser(patientId: string, updatedUserObj: IUser):Observable<IUser> {
+  getUsersByParams(params: {}): Observable<IUser[]> {
+    console.log(params, 'params')
+    return this.httpClient.post<IUser[]>(urls.user.getByParams, params);
+  };
+
+
+  updateUser(patientId: string, updatedUserObj: IUser): Observable<IUser> {
     return this.httpClient.put<IUser>(urls.user.url + '/' + patientId, updatedUserObj);
   };
 
-  deleteUser(_id: string):Observable<IUser> {
+  deleteUser(_id: string): Observable<IUser> {
     return this.httpClient.delete<IUser>(urls.user.url + '/' + _id);
   };
 }

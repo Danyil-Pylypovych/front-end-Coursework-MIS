@@ -1,31 +1,42 @@
-import { Component } from '@angular/core';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {NestedTreeControl} from '@angular/cdk/tree';
+import {Component} from '@angular/core';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {Router} from "@angular/router";
 
 interface FoodNode {
   name: string;
   children?: FoodNode[];
+  value?:string;
 }
 
 const TREE_DATA: FoodNode[] = [
   {
-    name: 'Fruit',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
+    name: 'Doctor list speciality',
+    children: [
+      {name: 'Pediatrician',},
+      {name: 'Therapist'},
+      {name: 'Family Doctor'},
+      {name: 'Cardiologist'},
+      {name: 'Otolaryngologist'},
+      {name: 'Neurologist'},
+      {name: 'Surgeon'},
+    ],
   },
   {
-    name: 'Vegetables',
+    name: 'Medical card',
     children: [
-      {
-        name: 'Green',
-        children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
-      },
-      {
-        name: 'Orange',
-        children: [{name: 'Pumpkins'}, {name: 'Carrots'}],
-      },
+      {name: 'Last visit'},
+      {name: 'All history'},
     ],
   },
 ];
+
+/** Flat node with expandable and level information */
+interface ExampleFlatNode {
+  expandable: boolean;
+  name: string;
+  level: number;
+}
 
 @Component({
   selector: 'app-side-bar',
@@ -33,12 +44,39 @@ const TREE_DATA: FoodNode[] = [
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
 
-  constructor() {
+  constructor(private router:Router) {
     this.dataSource.data = TREE_DATA;
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  private _transformer = (node: FoodNode, level: number) => {
+    return {
+      expandable: !!node.children && node.children.length > 0,
+      name: node.name,
+      level: level,
+    };
+  };
+
+  treeControl = new FlatTreeControl<ExampleFlatNode>(
+    node => node.level,
+    node => node.expandable,
+  );
+
+  treeFlattener = new MatTreeFlattener(
+    this._transformer,
+    node => node.level,
+    node => node.expandable,
+    node => node.children,
+  );
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+
+
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+
+  onClickLink(value:string):void {
+    console.log(value,123)
+    this.router.navigate(['cabinet/doctorList'], {queryParams:{specialty:value.toLowerCase()}})
+  }
 }
