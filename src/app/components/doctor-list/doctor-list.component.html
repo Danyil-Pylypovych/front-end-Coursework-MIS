@@ -1,2 +1,11 @@
 <h4>hello world</h4>
-<p *ngIf="doctorsBySpecialty">{{doctorsBySpecialty|json}}</p>
+
+
+<div *ngIf="doctorsBySpecialty">
+  <div *ngFor="let doctor of doctorsBySpecialty">
+    <div>{{doctor.name}}</div>
+    <div>{{doctor.phone}}</div>
+    <div>{{doctor.isDoctor}}</div>
+    <div>{{doctor.email}}</div>
+  </div>
+</div>
