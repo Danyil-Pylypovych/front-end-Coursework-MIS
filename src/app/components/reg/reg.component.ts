@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CheckFormService } from '../check-form.service';
-import { AuthService } from '../auth.service';
+import { CheckFormService } from '../../check-form.service';
+import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { Event } from '@angular/router';
 
