@@ -24,7 +24,11 @@ export class UserService {
     console.log(params, 'params')
     return this.httpClient.post<IUser[]>(urls.user.getByParams, params);
   };
-
+  getUsersBySpecialty(specialty: string): Observable<IUser[]> {
+    console.log( specialty,'service work')
+ console.log(   urls.user.getBySpecialty + '/' + specialty)
+    return this.httpClient.get<IUser[]>(urls.user.getBySpecialty + '/' + specialty);
+  };
 
   updateUser(patientId: string, updatedUserObj: IUser): Observable<IUser> {
     return this.httpClient.put<IUser>(urls.user.url + '/' + patientId, updatedUserObj);

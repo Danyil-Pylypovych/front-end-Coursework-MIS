@@ -16,27 +16,24 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService) {
-    this.activatedRoute.queryParams.subscribe((params) => this.specialty = params['specialty'])
 
   }
 
   ngOnInit(): void {
-    this.getDoctorBySpecialty();
+
   };
 
   ngAfterViewInit(): void {
     this.activatedRoute.params.subscribe(({specialty}) => {
       console.log(specialty)
-      if (specialty !== this.specialty) {
-        this.getDoctorBySpecialty();
-      }
-
+        this.getDoctorBySpecialty(specialty)
     })
   };
 
-  getDoctorBySpecialty(): void {
-    this.userService.getUsersByParams({specialty: this.specialty}).subscribe({
+  getDoctorBySpecialty(specialty:string): void {
+    this.userService.getUsersBySpecialty(specialty).subscribe({
       next: (value) => {
+        console.log(value,'value')
         this.doctorsBySpecialty = value;
       },
       error: (e) => console.log(e)

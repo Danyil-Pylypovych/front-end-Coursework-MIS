@@ -3,7 +3,7 @@
   <div *ngIf="timetable && timetable !== [];else nolist">
     <div *ngFor="let time of timetable">
       <h4>{{time.day}}</h4>
-      <button [disabled]="time.isChecked" (click)="chooseTime(time)">{{---time.time}}---</button>
+      <button [disabled]="time.isChecked" (click)="chooseTime(time)">---{{time.time}}---</button>
 
     </div>
   </div>

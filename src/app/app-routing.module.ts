@@ -15,7 +15,7 @@ const routes: Routes = [
       {path: 'login', component: AuthComponent},
       {
         path: 'cabinet', component: PrivateCabinetComponent, children: [
-          {path: 'doctorList', component: DoctorListComponent},
+          {path: 'doctorList/:specialty', component: DoctorListComponent},
           {path: 'cardList', component: CardListComponent},
         ]
       }

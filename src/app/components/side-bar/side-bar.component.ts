@@ -77,11 +77,9 @@ export class SideBarComponent {
   onClickLink(value: string): void {
 
     if (value === 'Last visit' || value === 'All history') {
-      console.log(value)
       this.router.navigate(['cabinet/cardList'], {queryParams: {period: value}})
     } else {
-      console.log(value, '00000000000')
-      this.router.navigate(['cabinet/doctorList'], {queryParams: {specialty: value.toLowerCase()}})
+      this.router.navigate([`cabinet/doctorList/${value.toLowerCase()}`])
     }
   }
 }
