@@ -1,21 +1,24 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ITimetable, IUser} from "../../interfaces";
-import {TimetableService} from "../../servises";
+import {TimetableService, UserInfoService} from "../../servises";
 
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
   styleUrls: ['./timetable.component.scss']
 })
-export class TimetableComponent implements OnInit{
+export class TimetableComponent implements OnInit {
   @Input() doctor: IUser
-  timetable:ITimetable[]
+  timetable: ITimetable[]
+  user: IUser | null;
 
-  constructor(private timetableService: TimetableService) {
+  constructor(private timetableService: TimetableService,
+              private userInfoService: UserInfoService) {
   };
 
   ngOnInit(): void {
-    this.getTimetable()
+    this.getTimetable();
+    this.userInfoService.getUser().subscribe(value => this.user = value)
 
   }
 
@@ -23,19 +26,23 @@ export class TimetableComponent implements OnInit{
     const _id = this.doctor._id
 
     this.timetableService.getByParams({doctorId: _id}).subscribe({
-      next:(value)=> this.timetable = value,
-      error:(e) => console.log(e)
+      next: (value) => this.timetable = value,
+      error: (e) => console.log(e)
     })
   };
 
 
-  chooseTime(time:ITimetable):void {
-    time = {...time, isChecked:true}
+  chooseTime(time: ITimetable): void {
+    time = {...time, isChecked: true}
     this.timetable = this.timetable
       .map(value => (value._id === time._id) ? time : value);
     //todo make client ID dynamically
-    this.timetableService.updateTimetable('646a837e488968ecb46a7ab0', time)
-      .subscribe({next:(value)=> console.log(value),
-      error:(e)=> console.log(e)})
+    console.log(this.user)
+    this.timetableService.updateTimetable(this.user!._id, time)
+      .subscribe({
+
+        next: (value) => console.log(value),
+        error: (e) => console.log(e)
+      })
   };
 }

@@ -15,7 +15,7 @@ export class UserCardService {
     return this.httpClient.post<IUserCard>(urls.user.createClientCard + '/' + clientId, userCardObj);
   };
 
-  //todo
+  // todo
   // getAllUserCards(token: string):Observable<IUserCard[]> {
   //   return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll, token);
   // };

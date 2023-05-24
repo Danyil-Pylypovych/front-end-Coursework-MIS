@@ -1,5 +1,5 @@
 <div class="cabinet-wrap">
-    <app-side-bar></app-side-bar>
+    <app-side-bar *ngIf="isVisibleSideBar"></app-side-bar>
     <router-outlet></router-outlet>
 </div>
 

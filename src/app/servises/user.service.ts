@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {IUser} from '../interfaces';
 import {Observable} from 'rxjs';
@@ -21,12 +21,14 @@ export class UserService {
   };
 
   getUsersByParams(params: {}): Observable<IUser[]> {
-    console.log(params, 'params')
     return this.httpClient.post<IUser[]>(urls.user.getByParams, params);
   };
+  getUsersByToken(access_token: string): Observable<IUser> {
+    const headers = new HttpHeaders().set('Authorization', access_token);
+    return this.httpClient.get<IUser>(urls.user.getByToken, { headers });
+  };
+
   getUsersBySpecialty(specialty: string): Observable<IUser[]> {
-    console.log( specialty,'service work')
- console.log(   urls.user.getBySpecialty + '/' + specialty)
     return this.httpClient.get<IUser[]>(urls.user.getBySpecialty + '/' + specialty);
   };
 

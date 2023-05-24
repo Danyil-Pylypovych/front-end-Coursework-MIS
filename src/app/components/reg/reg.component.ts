@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { CheckFormService } from '../../check-form.service';
-import { AuthService } from '../../auth.service';
-import { Router } from '@angular/router';
-import { Event } from '@angular/router';
+import {Component} from '@angular/core';
+import {CheckFormService} from '../../check-form.service';
+import {Router} from '@angular/router';
+import {AuthService} from "../../servises";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -11,61 +11,42 @@ import { Event } from '@angular/router';
   styleUrls: ['./reg.component.scss']
 })
 export class RegComponent {
-  
-  name!: String;
-  password!: String;
-  city!: String;
-  email!: String;
-  phone!: String;
-  gender!: String;
+  form:FormGroup;
+  error:boolean;
 
   constructor(private checkForm: CheckFormService,
-    private router: Router,
-    private authServise: AuthService) { }
+              private router: Router,
+              private authService: AuthService) {
+    this._initForm()
+  }
 
   clientRegisterClick() {
-    const patient = {
-      name: this.name,
-      password: this.password,
-      city: this.city,
-      email: this.email,
-      phone: this.phone,
-      gender: this.gender
-    }
+    this.authService.register(this.form.value).subscribe({
+      next: () => {
+        console.log('done')
+        this.router.navigate(['/login'])
+      },
+      error: (e) => {
+        this.error = true
+        console.log(e);
+      }
+    })
+  }
 
-    if(!this.checkForm.checkName(patient.name)) {
-      alert("ФІО не введено")
-      return false
-    } else if(!this.checkForm.checkPassword(patient.password)) {
-      alert("Пароль не введен")
-      return false
-    } else if(!this.checkForm.checkCity(patient.city)) {
-      alert("Місто не введен")
-      return false
-    } else if(!this.checkForm.checkEmail(patient.email)) {
-      alert("Email не введен")
-      return false
-    } else if(!this.checkForm.checkPhone(patient.phone)) {
-      alert("Телефон не введен")
-      return false
-    } else if(!this.checkForm.checkGender(patient.gender)) {
-      alert("Гендер не введен")
-      return false
-    } else {
-      this.authServise.registerPatient(patient).subscribe(data => {
-        console.log("Я дійшов")
-        if(!data.success) {
-          alert(data.msg)
-          this.router.navigate(['reg'])
-        } else {
-          alert(data.msg)
-          this.router.navigate(['auth'])
-        }
-      })
-      this.router.navigate(['auth'])
-      return patient
-    }
+  _initForm(): void {
+    this.form = new FormGroup({
+      name:new FormControl('', ),
+      email:new FormControl('', [Validators.required]),
+      password:new FormControl('', [Validators.required]),
+      birth:new FormControl('', ),
+      phone:new FormControl('', ),
+      gender:new FormControl('', [Validators.required]),
+      isDoctor:new FormControl(false, [Validators.required]),
+      specialty:new FormControl('', ),
+    })
+  }
 
-    
+  checkkk() {
+    console.log(this.form.get('gender')!.value)
   }
 }

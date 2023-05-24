@@ -15,6 +15,7 @@ const urls = {
   user: {
     url: users,
     getByParams: `${users}/byParams`,
+    getByToken: `${users}/getByToken`,
     getBySpecialty: `${users}/bySpecialty`,
     clientCardAll: `${users}/clientCardAll`,
     createClientCard: `${users}/createClientCard`,

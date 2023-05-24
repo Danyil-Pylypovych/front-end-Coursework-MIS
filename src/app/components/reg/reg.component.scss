@@ -1,0 +1,36 @@
+.checkbox_section {
+  margin: 12px 0;
+  color: brown;
+}
+
+.checkbox_is_doctor {
+  margin: 0 12px;
+  color: green;
+}
+
+::ng-deep .mat-mdc-checkbox label {
+  color: black;
+}
+
+::ng-deep .mdc-checkbox {
+
+  background: cadetblue;
+  border-radius: 50%;
+}
+
+::ng-deep .mat-mdc-select-value {
+  color: black;
+}
+
+::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: black;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: none;
+  border: silver solid 1px;
+}
+
+::ng-deep .mat-mdc-select-arrow svg {
+  color: black;
+}

@@ -1,10 +1,26 @@
 <h1>Реєстрація</h1>
-<form method="post">
-    <input type="text" [(ngModel)]="name" name="name" placeholder="Введіть ваше ФІО" class="form-control"><br>
-    <input type="password" [(ngModel)]="password" name="password" placeholder="Введіть ваш пароль" class="form-control"><br>
-    <input type="text" [(ngModel)]="city" name="city" placeholder="Введіть ваше місто проживання" class="form-control"><br>
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email адресу" class="form-control"><br>
-    <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Введіть ваш номер телефону" class="form-control"><br>
-    <input type="text" [(ngModel)]="gender" name="gender" placeholder="Введіть ваше ФІО" class="form-control"><br>
-    <button class="btn btn-success" (click)="clientRegisterClick()">Зареєструватись</button>
+<form style="display: flex; flex-direction: column" [formGroup]="form">
+  <section class="checkbox_section">
+    <mat-checkbox  formControlName="isDoctor"  class="checkbox_is_doctor">Зареєструватися як лікар</mat-checkbox>
+  </section>
+    <input type="text" formControlName="name" name="name" placeholder="Введіть ваше ПІП" class="form-control"><br>
+    <input type="text" formControlName="birth" name="birth" placeholder="Введіть дату народження" class="form-control"><br>
+    <input type="tel" formControlName="phone" name="phone" placeholder="Введіть ваш номер телефону" class="form-control"><br>
+    <input type="password" formControlName="password" name="password" placeholder="Введіть ваш пароль" class="form-control"><br>
+    <input type="email" formControlName="email" name="email" placeholder="Введіть ваш email адресу" class="form-control"><br>
+    <input *ngIf="form.get('isDoctor')!.value" type="text"  formControlName="specialty" name="specialty" placeholder="Введіть вашу спеціальність" class="form-control"><br>
+
+  <mat-form-field>
+    <mat-label>Оберіть стать</mat-label>
+    <mat-select  formControlName="gender">
+      <mat-option  [value]="'male'">
+        Male
+      </mat-option>
+      <mat-option  [value]="'female'">
+        Female
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+    <button class="btn btn-success" [disabled]="!form.valid" (click)="clientRegisterClick()">Зареєструватись</button>
 </form>
