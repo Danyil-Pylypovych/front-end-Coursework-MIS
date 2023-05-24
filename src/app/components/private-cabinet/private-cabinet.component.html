@@ -1,5 +1,11 @@
 <div class="cabinet-wrap">
-    <app-side-bar *ngIf="isVisibleSideBar"></app-side-bar>
+
+    <app-side-bar *ngIf="isVisibleSideBar && user && !user.isDoctor"></app-side-bar>
+    <app-side-doctor-bar *ngIf="isVisibleSideBar && user && user.isDoctor"></app-side-doctor-bar>
+  <div>
     <router-outlet></router-outlet>
+    <div>welcome to Cabinet</div>
+  </div>
+
 </div>
 

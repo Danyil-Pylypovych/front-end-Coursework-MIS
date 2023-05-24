@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserInfoService} from "../../servises";
+import {IUser} from "../../interfaces";
 
 @Component({
   selector: 'app-private-cabinet',
@@ -8,12 +10,17 @@ import {Router} from "@angular/router";
 })
 export class PrivateCabinetComponent implements OnInit {
   isVisibleSideBar: boolean = true;
+  user: IUser | null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private userInfoService: UserInfoService) {
   }
 
   ngOnInit(): void {
-    if (this.router.url === '/cabinet/home') this.isVisibleSideBar = false
+    this.userInfoService.getUser().subscribe(value => {
+      this.user = value
+    })
+    if (this.router.url === '/cabinet/home') this.isVisibleSideBar = false;
   }
 
 

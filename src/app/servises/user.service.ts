@@ -20,6 +20,10 @@ export class UserService {
     return this.httpClient.get<IUser[]>(urls.user.url);
   };
 
+  getUserById(_id:string): Observable<IUser> {
+    return this.httpClient.get<IUser>(urls.user.url + '/' + _id);
+  };
+
   getUsersByParams(params: {}): Observable<IUser[]> {
     return this.httpClient.post<IUser[]>(urls.user.getByParams, params);
   };

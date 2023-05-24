@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+  <mat-card>
+    <mat-card-title *ngIf="!isDayChecked">Додати дату прийому</mat-card-title>
+    <mat-card-title *ngIf="isDayChecked">Додати час прийому</mat-card-title>
+    <mat-error *ngIf="error">This field is required</mat-error>
+    <mat-card-content>
+      <div *ngIf="!isDayChecked">
+        <mat-form-field appearance="outline">
+          <mat-label>День прийому</mat-label>
+          <input type="text" matInput formControlName="day">
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+        <button [disabled]="form.invalid" mat-raised-button color="primary" (click)="onDayChecked()">Вибрати</button>
+      </div>
+
+      <div *ngIf="isDayChecked" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+          <h2>{{checkedDay}}</h2>
+        <div>
+          <button  *ngFor="let hour of hoursArr"
+                   [value]="hour" mat-button
+                   (click)="onChooseTime(hour)"
+                   [disabled]="checkedHours.includes(hour)"
+          >
+            {{hour}}</button>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions class="actions">
+      <button mat-raised-button color="primary" (click)="closeTimetable()">Закрити</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+

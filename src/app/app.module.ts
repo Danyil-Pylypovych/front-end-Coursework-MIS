@@ -18,19 +18,24 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CheckFormService} from './check-form.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MainlayoutComponent} from './mainlayout/mainlayout.component';
-import {PrivateCabinetComponent} from './components/private-cabinet/private-cabinet.component';
-import {SideBarComponent} from './components/side-bar/side-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from "@angular/material/button";
-import {DoctorListComponent} from './components/doctor-list/doctor-list.component';
-import {TimetableComponent} from './components/timetable/timetable.component';
-import {CardListComponent} from './components/card-list/card-list.component';
+import {PrivateCabinetComponent} from './components';
+import {SideBarComponent} from './components';
+import {SideBarDoctorComponent} from './components';
+import {DoctorListComponent} from './components';
+import {TimetableComponent} from './components';
+import {CardListComponent} from './components';
+import { Error404Component } from './components';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
-import { Error404Component } from './components/error404/error404.component';
+import { ShowTimeTableComponent } from './components';
+import { CreateTimetableModalComponent } from './components/create-timetable-modal/create-timetable-modal.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatDialogModule} from "@angular/material/dialog";
 
 const appRoute: Routes = [
   {path: '', component: HomeComponent},
@@ -51,10 +56,13 @@ const appRoute: Routes = [
     MainlayoutComponent,
     PrivateCabinetComponent,
     SideBarComponent,
+    SideBarDoctorComponent,
     DoctorListComponent,
     TimetableComponent,
     CardListComponent,
-    Error404Component
+    Error404Component,
+    ShowTimeTableComponent,
+    CreateTimetableModalComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +78,8 @@ const appRoute: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
+    MatCardModule,
+    MatDialogModule,
   ],
   providers: [CheckFormService],
   bootstrap: [AppComponent]

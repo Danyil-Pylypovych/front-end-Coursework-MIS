@@ -11,8 +11,8 @@ export class TimetableService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createTimetable(doctorId: string):Observable<ITimetable> {
-    return this.httpClient.post<ITimetable>(urls.timetable.create, doctorId);
+  createTimetable(timetableObj: Object):Observable<ITimetable> {
+    return this.httpClient.post<ITimetable>(urls.timetable.create, timetableObj);
   };
 
   getByParams(params: Object):Observable<ITimetable[]> {

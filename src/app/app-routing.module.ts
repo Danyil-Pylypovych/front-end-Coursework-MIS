@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainlayoutComponent} from './mainlayout/mainlayout.component';
-import {AuthComponent, HomeComponent, RegComponent} from './components';
+import {AuthComponent, HomeComponent, RegComponent, ShowTimeTableComponent} from './components';
 import {PrivateCabinetComponent} from './components/private-cabinet/private-cabinet.component';
 import {DoctorListComponent} from "./components/doctor-list/doctor-list.component";
 import {CardListComponent} from "./components/card-list/card-list.component";
@@ -26,6 +26,7 @@ const routes: Routes = [
           {path: 'home', component: HomeComponent},
           {path: 'doctorList/:specialty', component: DoctorListComponent},
           {path: 'cardList', component: CardListComponent},
+          {path: 'doctorTimetable', component: ShowTimeTableComponent},
         ]
       },
       {path: '**', redirectTo: 'error404', title: '404', data: {error: 404}},
