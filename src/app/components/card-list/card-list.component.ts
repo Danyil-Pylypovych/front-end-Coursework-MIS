@@ -27,7 +27,7 @@ constructor(private activatedRoute: ActivatedRoute,
 
   getCards():void  {
     //todo get user ID dynamically
-    this.userCardService.getAllUserCardsByUserId('646a837e488968ecb46a7ab0').subscribe({
+    this.userCardService.getAllUserCardsByUserId('646ccc6faccef02d9b3e806c').subscribe({
       next:(value)=> {
         this.userCards = value
         console.log(value)

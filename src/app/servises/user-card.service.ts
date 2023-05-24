@@ -20,9 +20,9 @@ export class UserCardService {
   //   return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll, token);
   // };
 
-  getAllUserCardsByUserId(clientId: string):Observable<IUserCard[]> {
-    console.log(clientId, 'clientId')
-    return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll + '/' + clientId);
+  getAllUserCardsByUserId(userId: string):Observable<IUserCard[]> {
+    console.log(userId, 'clientId')
+    return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll + '/' + userId);
   };
 
 
