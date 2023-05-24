@@ -3,7 +3,6 @@
   <div *ngIf="timetables">
     <div *ngFor="let timetable of timetables; let  i = index">
       <div *ngIf="timetable.isChecked">
-<!--        <h4>{{getUserName(timetable.patientId) || "UNKNOWN"}}</h4>-->
         <h4>{{timetable.day}}</h4>
         <h4>{{timetable.time}}</h4>
       </div>
