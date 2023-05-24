@@ -1,0 +1,17 @@
+.title {
+    padding: 20px;
+    font-weight: bold;
+}
+.conteiner {
+    display: flex;
+
+    .conteiner-elements {
+        display: inline-block;
+        margin-right: 30px;
+
+        button {
+            height: 40px;
+            width: 125px;
+        }
+    }
+}

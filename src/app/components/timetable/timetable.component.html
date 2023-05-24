@@ -1,9 +1,9 @@
 <div>
-  Time List:
-  <div *ngIf="timetable && timetable !== [];else nolist">
-    <div *ngFor="let time of timetable">
+  <h2 class="title">Time List:</h2>
+  <div class="conteiner" *ngIf="timetable && timetable !== [];else nolist">
+    <div class="conteiner-elements" *ngFor="let time of timetable">
       <h4>{{time.day}}</h4>
-      <button [disabled]="time.isChecked" (click)="chooseTime(time)">---{{time.time}}---</button>
+      <button class="btn btn-success" [disabled]="time.isChecked" (click)="chooseTime(time)">{{time.time.replace('.', ':')}}</button>
 
     </div>
   </div>
