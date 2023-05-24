@@ -34,7 +34,7 @@ export class TimetableComponent implements OnInit{
     this.timetable = this.timetable
       .map(value => (value._id === time._id) ? time : value);
     //todo make client ID dynamically
-    this.timetableService.updateTimetable('646ccc6faccef02d9b3e806c', time)
+    this.timetableService.updateTimetable('646a837e488968ecb46a7ab0', time)
       .subscribe({next:(value)=> console.log(value),
       error:(e)=> console.log(e)})
   };
