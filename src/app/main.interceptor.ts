@@ -1,23 +1,19 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor, HttpErrorResponse
-} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {catchError, Observable, switchMap, throwError} from 'rxjs';
-import {AuthService} from "./servises";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+
+import {AuthService} from "./servises";
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
 
-  isRefreshing = false
+  isRefreshing:boolean = false;
 
   constructor(private authService: AuthService,
-              private dialog:MatDialog,
-              private router:Router) {
+              private dialog: MatDialog,
+              private router: Router) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -32,7 +28,7 @@ export class MainInterceptor implements HttpInterceptor {
           return this.handle401Error(request, next)
         }
 
-        return throwError(()=> res)
+        return throwError(() => res)
       })
     );
   }
@@ -51,14 +47,13 @@ export class MainInterceptor implements HttpInterceptor {
       return this.authService.refresh(refresh).pipe(
         switchMap((token) => {
           this.isRefreshing = false
-          return next.handle(this.addToken(request, token.access))
+          return next.handle(this.addToken(request, token.access_token))
         }),
         catchError(() => {
           this.isRefreshing = false
           this.authService.deleteTokens()
-          this.dialog.closeAll()
           this.router.navigate(['/login'])
-          return throwError(()=> new Error('Token is invalid or expired'))
+          return throwError(() => new Error('Token is invalid or expired'))
 
         })
       )

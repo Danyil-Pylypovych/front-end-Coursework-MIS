@@ -10,7 +10,6 @@ export class UserInfoService {
   private _userInfo = new BehaviorSubject<IUser | null>(null)
 
   setUser(user:IUser): void {
-    console.log(user,'user added')
     this._userInfo.next(user)
   }
 
