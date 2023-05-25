@@ -20,7 +20,7 @@
     </mat-form-field>
   </div>
   <div style="display: flex; width: 100%; justify-content: space-between; padding: 10px 20px">
-    <button (click)="dialogRef.close()">Скасувати</button>
-    <button [disabled]="!form.valid" (click)="createClientCard(form.value)">Зберегти</button>
+    <button class="btn btn-success" (click)="dialogRef.close()">Скасувати</button>
+    <button class="btn btn-success" [disabled]="!form.valid" (click)="createClientCard(form.value)">Зберегти</button>
   </div>
 </form>
