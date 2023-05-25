@@ -1,23 +1,23 @@
-<div style="display: flex; flex-direction: column">
+<div class="show" >
   <h2>Timetable</h2>
-  <div style="width: 100%; height: 100px; display: flex; align-items: center; background: silver; border-radius: 15px">
-    <button (click)="fullTimetable = true" style="margin-left: 50px">Увесь графік</button>
-    <button (click)="fullTimetable = false" style="margin-left: 50px">Записи на прийом</button>
+  <div class="button-timetable">
+    <button class="btn btn-success" (click)="fullTimetable = true">Увесь графік</button>
+    <button class="btn btn-success" (click)="fullTimetable = false" style="margin-left: 50px">Записи на прийом</button>
   </div>
   <div *ngIf="timetables">
-    <div *ngFor="let timetable of timetables; let  i = index">
+    <div *ngFor="let timetable of timetables; let  i = index" class="timetable-item">
       <div  *ngIf="timetable.isChecked && !fullTimetable">
         <h4>{{timetable.day}}</h4>
         <h4>{{timetable.time}}</h4>
         <p>{{timetable.patientName}}</p>
-        <button style="margin-left: 20px" [disabled]="timetable.isCompleted" (click)="createClientCard(timetable)">Прийняти</button>
+        <button class="btn btn-success" [disabled]="timetable.isCompleted" (click)="createClientCard(timetable)">Прийняти</button>
         <hr>
       </div>
       <div *ngIf="fullTimetable">
         <h4>{{timetable.day}}</h4>
         <h4>{{timetable.time}}</h4>
-        <p>{{timetable.patientName}}</p>
-        <button *ngIf="timetable.isChecked" [disabled]="timetable.isCompleted" style="margin-left: 20px" (click)="createClientCard(timetable)">Прийняти
+        <h3>{{timetable.patientName}}</h3>
+        <button class="btn btn-success" *ngIf="timetable.isChecked" [disabled]="timetable.isCompleted" (click)="createClientCard(timetable)">Прийняти
         </button>
         <hr>
       </div>

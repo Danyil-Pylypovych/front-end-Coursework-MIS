@@ -1,0 +1,17 @@
+.show {
+    display: flex; 
+    flex-direction: column;
+    padding: 50px;
+
+    .button-timetable {
+        width: 100%; 
+        height: 100px; 
+        display: flex; 
+        align-items: center; 
+        border-radius: 15px
+    }
+
+    .timetable-item {
+        padding: 25px;
+    }
+}
