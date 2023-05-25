@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {CheckFormService} from '../../check-form.service';
 import {AuthService} from "../../servises";
 
 @Component({
@@ -15,8 +14,7 @@ export class AuthComponent {
   password: string;
   error: boolean
 
-  constructor(private checkForm: CheckFormService,
-              private router: Router,
+  constructor(private router: Router,
               private authService: AuthService) {
   }
 

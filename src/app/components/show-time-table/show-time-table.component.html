@@ -1,4 +1,4 @@
-<div class="show" >
+<div class="show">
   <h2>Timetable</h2>
   <div class="button-timetable">
     <button class="btn btn-success" (click)="fullTimetable = true">Увесь графік</button>
@@ -6,18 +6,21 @@
   </div>
   <div *ngIf="timetables">
     <div *ngFor="let timetable of timetables; let  i = index" class="timetable-item">
-      <div  *ngIf="timetable.isChecked && !fullTimetable">
+      <div *ngIf="timetable.isChecked && !fullTimetable">
         <h4>{{timetable.day}}</h4>
         <h4>{{timetable.time}}</h4>
         <p>{{timetable.patientName}}</p>
-        <button class="btn btn-success" [disabled]="timetable.isCompleted" (click)="createClientCard(timetable)">Прийняти</button>
+        <button class="btn btn-success" [disabled]="timetable.isCompleted" (click)="createClientCard(timetable)">
+          Прийняти
+        </button>
         <hr>
       </div>
       <div *ngIf="fullTimetable">
         <h4>{{timetable.day}}</h4>
         <h4>{{timetable.time}}</h4>
         <h3>{{timetable.patientName}}</h3>
-        <button class="btn btn-success" *ngIf="timetable.isChecked" [disabled]="timetable.isCompleted" (click)="createClientCard(timetable)">Прийняти
+        <button class="btn btn-success" *ngIf="timetable.isChecked" [disabled]="timetable.isCompleted"
+                (click)="createClientCard(timetable)">Прийняти
         </button>
         <hr>
       </div>

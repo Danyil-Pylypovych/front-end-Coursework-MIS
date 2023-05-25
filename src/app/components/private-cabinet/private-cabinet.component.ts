@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+
 import {UserInfoService} from "../../servises";
 import {IUser} from "../../interfaces";
 

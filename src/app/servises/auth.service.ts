@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {IAuth, ITokens, IUser} from "../interfaces";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {urls} from "../configs";
+
+import {IAuth, ITokens, IUser} from "../interfaces";
 import {UserInfoService} from "./user-info.service";
 import {IRegUser} from "../interfaces/reg-user";
+import {urls} from "../configs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class AuthService {
         this._setTokens(tokens)
       })
     )
-  }
+  };
 
   refresh(refresh: string): Observable<ITokens> {
     return this.httpClient.post<ITokens>(urls.auth.refresh, {refresh}).pipe(
@@ -32,33 +33,27 @@ export class AuthService {
         this._setTokens(tokens)
       )
     )
-  }
+  };
 
   register(user:IRegUser):Observable<IUser>{
     return  this.httpClient.post<IUser>(urls.auth.signup, user)
-  }
-
+  };
   getUserEmail():Observable<string|null>{
     return this._authUser.asObservable()
-  }
-
+  };
   private _setTokens({access_token, refresh_token}: ITokens): void {
     localStorage.setItem(this._accessTokenKey, access_token)
     localStorage.setItem(this._refreshTokenKey, refresh_token)
   };
-
   isAuthenticated():boolean{
     return !!this.getAccessToken()
-  }
-
+  };
   getAccessToken(): string {
     return localStorage.getItem(this._accessTokenKey) || ''
   };
-
   getRefreshToken(): string {
     return localStorage.getItem(this._refreshTokenKey) || ''
   };
-
   deleteTokens(): void {
     localStorage.removeItem(this._refreshTokenKey)
     localStorage.removeItem(this._accessTokenKey)

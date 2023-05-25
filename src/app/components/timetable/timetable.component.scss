@@ -1,24 +1,25 @@
 .title {
-    padding: 20px;
-    font-weight: bold;
+  padding: 20px;
+  font-weight: bold;
 }
+
 .conteiner {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-    .conteiner-elements {
-        margin-right: 30px;
-        margin-bottom: 10px;
-        width: fit-content;
-        max-width: 100%;
+  .conteiner-elements {
+    margin-right: 30px;
+    margin-bottom: 10px;
+    width: fit-content;
+    max-width: 100%;
 
-        .btn {
-            height: 40px;
-            width: 125px;
-            max-width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
+    .btn {
+      height: 40px;
+      width: 125px;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
+  }
 }

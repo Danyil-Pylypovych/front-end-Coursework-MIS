@@ -22,10 +22,10 @@ export class ShowTimeTableComponent implements OnInit {
   };
 
   ngOnInit(): void {
-   this.getData();
+    this.getData();
   };
 
-  getData():void{
+  getData(): void {
     this.userInfoService.getUser().subscribe(value => {
       value && this.timetableService.getByParams({doctorId: value._id}).subscribe({
         next: (value) => {
