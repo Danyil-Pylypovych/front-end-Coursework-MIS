@@ -22,7 +22,7 @@ export class PrivateCabinetComponent implements OnInit {
       this.user = value
     })
     if (this.router.url === '/cabinet/home') this.isVisibleSideBar = false;
-  }
+  };
 
 
 }
