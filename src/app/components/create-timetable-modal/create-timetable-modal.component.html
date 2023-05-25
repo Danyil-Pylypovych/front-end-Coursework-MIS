@@ -12,16 +12,18 @@
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <button class="choose"  [disabled]="form.invalid" mat-raised-button color="primary" (click)="onDayChecked()">Вибрати</button>
+        <button class="choose" [disabled]="form.invalid" mat-raised-button color="primary" (click)="onDayChecked()">
+          Вибрати
+        </button>
       </div>
 
       <div class="choose-time" *ngIf="isDayChecked">
-          <h2>{{checkedDay}}</h2>
+        <h2>{{checkedDay}}</h2>
         <div>
-          <button  *ngFor="let hour of hoursArr"
-                   [value]="hour" mat-button
-                   (click)="onChooseTime(hour)"
-                   [disabled]="checkedHours.includes(hour)"
+          <button *ngFor="let hour of hoursArr"
+                  [value]="hour" mat-button
+                  (click)="onChooseTime(hour)"
+                  [disabled]="checkedHours.includes(hour)"
           >
             {{hour}}</button>
         </div>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 import {TimetableService, UserInfoService} from "../../servises";
 import {IUser} from "../../interfaces";
 
@@ -53,8 +54,8 @@ export class CreateTimetableModalComponent implements OnInit {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    this.checkedDay  = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
-    this.form.setValue({day:this.checkedDay })
+    this.checkedDay = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+    this.form.setValue({day: this.checkedDay})
   };
 
   onChooseTime(hour: string) {

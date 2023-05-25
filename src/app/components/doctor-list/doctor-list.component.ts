@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+
 import {UserService} from "../../servises";
 import {IUser} from "../../interfaces";
 
@@ -25,11 +26,11 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.activatedRoute.params.subscribe(({specialty}) => {
-        this.getDoctorBySpecialty(specialty)
+      this.getDoctorBySpecialty(specialty)
     })
   };
 
-  getDoctorBySpecialty(specialty:string): void {
+  getDoctorBySpecialty(specialty: string): void {
     this.userService.getUsersBySpecialty(specialty).subscribe({
       next: (value) => {
         this.doctorsBySpecialty = value;

@@ -1,18 +1,21 @@
 .doctor-item {
-    padding: 25px;
+  padding: 25px;
 }
+
 .name {
-    font-weight: bold;
-    padding: 10px;
-    font-size: 18pt;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 18pt;
 }
+
 .title {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 25px;
-    margin-left: 50px;
-    h2 {
-        font-weight: bolder;
-    }
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 25px;
+  margin-left: 50px;
+
+  h2 {
+    font-weight: bolder;
+  }
 }
