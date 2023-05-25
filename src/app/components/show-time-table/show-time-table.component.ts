@@ -22,6 +22,10 @@ export class ShowTimeTableComponent implements OnInit {
   };
 
   ngOnInit(): void {
+   this.getData();
+  };
+
+  getData():void{
     this.userInfoService.getUser().subscribe(value => {
       value && this.timetableService.getByParams({doctorId: value._id}).subscribe({
         next: (value) => {
@@ -30,19 +34,10 @@ export class ShowTimeTableComponent implements OnInit {
         error: (e) => console.log(e)
       })
     })
-  };
-
-  getUserName(_id: string): string | undefined {
-    let patient
-    this.userService.getUserById(_id).subscribe({
-      next: (value) => patient = value.name,
-      error: (e) => console.log(e)
-    })
-    return patient
   }
 
   createClientCard(timetable: ITimetable) {
-    this.dialog.open(CreateClientCardModalComponent, {
+    const dialogRef = this.dialog.open(CreateClientCardModalComponent, {
         disableClose: true,
         enterAnimationDuration: '1s',
         exitAnimationDuration: '1s',
@@ -50,5 +45,8 @@ export class ShowTimeTableComponent implements OnInit {
         data: timetable,
       }
     )
+    dialogRef.componentInstance.dataUpdated.subscribe(() => {
+      this.getData();
+    });
   };
 }

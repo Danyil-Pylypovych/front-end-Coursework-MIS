@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ITimetable, ITimetableForUpdate, IUserCard} from "../../interfaces";
 import {TimetableService, UserCardService} from "../../servises";
@@ -12,6 +12,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class CreateClientCardModalComponent {
   timetable: ITimetable;
   form: FormGroup;
+  @Output() dataUpdated: EventEmitter<null> = new EventEmitter<null>();
 
   constructor(public dialogRef: MatDialogRef<CreateClientCardModalComponent>,
               private userCardService: UserCardService,
@@ -38,6 +39,7 @@ export class CreateClientCardModalComponent {
         };
         this.completeTimetable(timetableObg)
         this.dialogRef.close()
+        this.dataUpdated.emit(null);
 
       },
       error: (e) => console.log(e)
