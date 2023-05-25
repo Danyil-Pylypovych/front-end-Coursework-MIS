@@ -21,7 +21,6 @@ export class UserCardService {
   // };
 
   getAllUserCardsByUserId(userId: string):Observable<IUserCard[]> {
-    console.log(userId, 'clientId')
     return this.httpClient.get<IUserCard[]>(urls.user.clientCardAll + '/' + userId);
   };
 

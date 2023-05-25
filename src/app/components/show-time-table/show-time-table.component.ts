@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 import {TimetableService, UserInfoService, UserService} from "../../servises";
 import {ITimetable, IUser} from "../../interfaces";
+import {MatDialog} from "@angular/material/dialog";
+import {CreateClientCardModalComponent} from "../create-client-card-modal/create-client-card-modal.component";
 
 @Component({
   selector: 'app-show-time-table',
@@ -11,10 +13,12 @@ import {ITimetable, IUser} from "../../interfaces";
 export class ShowTimeTableComponent implements OnInit {
   user: IUser | null;
   timetables: ITimetable[];
+  fullTimetable: boolean = true;
 
   constructor(private userInfoService: UserInfoService,
               private timetableService: TimetableService,
-              private userService: UserService) {
+              private userService: UserService,
+              private dialog: MatDialog) {
   };
 
   ngOnInit(): void {
@@ -36,4 +40,15 @@ export class ShowTimeTableComponent implements OnInit {
     })
     return patient
   }
+
+  createClientCard(timetable: ITimetable) {
+    this.dialog.open(CreateClientCardModalComponent, {
+        disableClose: true,
+        enterAnimationDuration: '1s',
+        exitAnimationDuration: '1s',
+        hasBackdrop: false,
+        data: timetable,
+      }
+    )
+  };
 }

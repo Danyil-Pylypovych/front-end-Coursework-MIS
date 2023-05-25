@@ -1,5 +1,5 @@
 export interface IUserCard {
-  _id: string,
+  _id?: string,
   diagnosis: string,
   prescription: string,
   referral: string,

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITimetable } from '../interfaces';
+import {ITimetable, ITimetableForUpdate} from '../interfaces';
 import { urls } from '../configs';
 
 @Injectable({
@@ -16,11 +16,13 @@ export class TimetableService {
   };
 
   getByParams(params: Object):Observable<ITimetable[]> {
-    console.log(params)
     return this.httpClient.post<ITimetable[]>(urls.timetable.url, params);
   };
 
   updateTimetable(patientId: string, timetable: ITimetable):Observable<ITimetable> {
     return this.httpClient.put<ITimetable>(urls.timetable.change + '/' + patientId, timetable);
+  };
+  updateTimetableCompleted(timetableObg: ITimetableForUpdate):Observable<ITimetable> {
+    return this.httpClient.put<ITimetable>(urls.timetable.change, timetableObg);
   };
 }

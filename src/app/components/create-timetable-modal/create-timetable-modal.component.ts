@@ -26,6 +26,7 @@ export class CreateTimetableModalComponent implements OnInit {
     this._timetableForm()
   };
 
+
   ngOnInit(): void {
     this.getUser()
   };
@@ -52,7 +53,6 @@ export class CreateTimetableModalComponent implements OnInit {
 
   onChooseTime(hour: string) {
     this.checkedHours.push(hour)
-    console.log(hour)
     this.createTimetable(this.checkedDay, hour)
   };
 

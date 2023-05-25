@@ -10,7 +10,7 @@ import {UserCardService, UserInfoService} from "../../servises";
 })
 export class CardListComponent implements OnInit {
   isFullPeriod: boolean;
-  userCards: IUserCard[]
+  userCards: IUserCard[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
               private userCardService: UserCardService,
@@ -34,7 +34,6 @@ export class CardListComponent implements OnInit {
     this.userCardService.getAllUserCardsByUserId(_id).subscribe({
       next: (value) => {
         this.userCards = value
-        console.log(value)
       }, error: (e) => console.log(e)
     })
   }

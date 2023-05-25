@@ -33,14 +33,11 @@ export class TimetableComponent implements OnInit {
 
 
   chooseTime(time: ITimetable): void {
-    time = {...time, isChecked: true}
+    time = {...time, isChecked: true, patientName:this.user!.name}
     this.timetable = this.timetable
       .map(value => (value._id === time._id) ? time : value);
-    //todo make client ID dynamically
-    console.log(this.user)
     this.timetableService.updateTimetable(this.user!._id, time)
       .subscribe({
-
         next: (value) => console.log(value),
         error: (e) => console.log(e)
       })

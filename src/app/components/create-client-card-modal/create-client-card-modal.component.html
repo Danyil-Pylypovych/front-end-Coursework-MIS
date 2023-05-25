@@ -1,0 +1,26 @@
+<form style="width: 300px; display: flex; flex-direction: column; align-items: center; padding: 40px 20px" [formGroup]="form">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Діагноз</mat-label>
+      <input type="text" matInput formControlName="diagnosis">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Рецепт</mat-label>
+      <input type="text" matInput formControlName="prescription">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Направлення</mat-label>
+      <input type="text" matInput formControlName="referral">
+      <mat-error>Only 10 characters</mat-error>
+    </mat-form-field>
+  </div>
+  <div style="display: flex; width: 100%; justify-content: space-between; padding: 10px 20px">
+    <button (click)="dialogRef.close()">Скасувати</button>
+    <button [disabled]="!form.valid" (click)="createClientCard(form.value)">Зберегти</button>
+  </div>
+</form>

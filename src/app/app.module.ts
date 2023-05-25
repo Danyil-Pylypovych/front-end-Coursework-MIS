@@ -36,6 +36,7 @@ import { ShowTimeTableComponent } from './components';
 import { CreateTimetableModalComponent } from './components/create-timetable-modal/create-timetable-modal.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
+import { CreateClientCardModalComponent } from './components/create-client-card-modal/create-client-card-modal.component';
 
 const appRoute: Routes = [
   {path: '', component: HomeComponent},
@@ -62,7 +63,8 @@ const appRoute: Routes = [
     CardListComponent,
     Error404Component,
     ShowTimeTableComponent,
-    CreateTimetableModalComponent
+    CreateTimetableModalComponent,
+    CreateClientCardModalComponent
   ],
   imports: [
     BrowserModule,

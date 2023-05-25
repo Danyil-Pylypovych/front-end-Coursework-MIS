@@ -45,8 +45,4 @@ export class RegComponent {
       specialty:new FormControl('', ),
     })
   }
-
-  checkkk() {
-    console.log(this.form.get('gender')!.value)
-  }
 }

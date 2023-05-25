@@ -1,5 +1,7 @@
 export * from './auth/auth.component';
 export * from './card-list/card-list.component';
+export * from './create-client-card-modal/create-client-card-modal.component';
+export * from './create-timetable-modal/create-timetable-modal.component';
 export * from './dashboard/dashboard.component';
 export * from './doctor-list/doctor-list.component';
 export * from './home/home.component';

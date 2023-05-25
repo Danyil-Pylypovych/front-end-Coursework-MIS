@@ -20,7 +20,6 @@ export class AuthService {
   login(user: IAuth): Observable<ITokens> {
     return this.httpClient.post<ITokens>(urls.auth.login, user).pipe(
       tap((tokens) => {
-        console.log(tokens)
         this._authUser.next(user.email)
         this._setTokens(tokens)
       })
