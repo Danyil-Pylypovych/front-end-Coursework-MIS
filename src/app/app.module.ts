@@ -37,6 +37,8 @@ import { CreateTimetableModalComponent } from './components/create-timetable-mod
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
 import { CreateClientCardModalComponent } from './components/create-client-card-modal/create-client-card-modal.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 const appRoute: Routes = [
   {path: '', component: HomeComponent},
@@ -82,6 +84,8 @@ const appRoute: Routes = [
     MatSelectModule,
     MatCardModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [CheckFormService],
   bootstrap: [AppComponent]

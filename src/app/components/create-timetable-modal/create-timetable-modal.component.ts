@@ -49,6 +49,8 @@ export class CreateTimetableModalComponent implements OnInit {
   onDayChecked(): void {
     this.isDayChecked = true;
     this.checkedDay = this.form.get('day')!.value
+    const date = new Date(this.checkedDay);
+    console.log(date)
   };
 
   onChooseTime(hour: string) {
