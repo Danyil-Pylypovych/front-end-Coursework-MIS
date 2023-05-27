@@ -1,8 +1,6 @@
 <div class="side-bar-wrap">
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-
       <a (click)="onClickLink(node.name)">{{node.name}}</a>
     </mat-tree-node>
 

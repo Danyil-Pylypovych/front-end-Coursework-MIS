@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 import {ITimetable, ITimetableForUpdate, IUserCard} from "../../interfaces";
 import {TimetableService, UserCardService} from "../../servises";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-create-client-card',

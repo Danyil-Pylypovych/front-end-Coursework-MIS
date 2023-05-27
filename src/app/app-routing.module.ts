@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainlayoutComponent} from './mainlayout/mainlayout.component';
 import {AuthComponent, HomeComponent, RegComponent, ShowTimeTableComponent} from './components';
-import {PrivateCabinetComponent} from './components/private-cabinet/private-cabinet.component';
-import {DoctorListComponent} from "./components/doctor-list/doctor-list.component";
-import {CardListComponent} from "./components/card-list/card-list.component";
+import {PrivateCabinetComponent} from './components';
+import {DoctorListComponent} from "./components";
+import {CardListComponent} from "./components";
 import {AuthGuard} from "./guards";
 import {UserResolver} from "./servises/resolvers";
-import {Error404Component} from "./components/error404/error404.component";
+import {Error404Component} from "./components";
 
 const routes: Routes = [
   {

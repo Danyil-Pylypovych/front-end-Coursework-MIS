@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+
 import {ITimetable, IUser} from "../../interfaces";
 import {TimetableService, UserInfoService} from "../../servises";
 
@@ -33,7 +34,7 @@ export class TimetableComponent implements OnInit {
 
 
   chooseTime(time: ITimetable): void {
-    time = {...time, isChecked: true, patientName:this.user!.name}
+    time = {...time, isChecked: true, patientName: this.user!.name}
     this.timetable = this.timetable
       .map(value => (value._id === time._id) ? time : value);
     this.timetableService.updateTimetable(this.user!._id, time)

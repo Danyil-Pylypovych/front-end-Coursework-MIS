@@ -81,5 +81,5 @@ export class SideBarComponent {
     } else {
       this.router.navigate([`cabinet/doctorList/${value.toLowerCase()}`])
     }
-  }
+  };
 }

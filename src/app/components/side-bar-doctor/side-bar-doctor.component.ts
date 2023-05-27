@@ -3,6 +3,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+
 import {CreateTimetableModalComponent} from "../create-timetable-modal/create-timetable-modal.component";
 
 interface FoodNode {

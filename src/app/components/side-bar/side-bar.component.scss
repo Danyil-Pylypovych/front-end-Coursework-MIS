@@ -1,17 +1,20 @@
 .side-bar-wrap {
   //position: fixed;
   width: 400px;
+
   a {
     color: white;
     text-decoration: none;
     transition: 0.3s;
     cursor: pointer;
   }
-  a:hover{
+
+  a:hover {
     scale: 1.1;
     transition: 0.3s;
   }
-  a:active{
+
+  a:active {
     color: #FFC107;
     transition: .3s;
   }

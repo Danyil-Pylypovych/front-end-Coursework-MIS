@@ -10,25 +10,25 @@ import {IUser} from "../../interfaces";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  user:IUser | null
-  isHome:boolean = false
+  user: IUser | null
+  isHome: boolean = false
 
-  constructor(private userInfoService:UserInfoService,
-              private router:Router,
-              private authService:AuthService) {
+  constructor(private userInfoService: UserInfoService,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
     if (this.router.url === '/cabinet/home') this.isHome = true;
 
     this.userInfoService.getUser().subscribe({
-      next:(value) => {
+      next: (value) => {
         this.user = value
-        if (this.router.url === '/index' && value !== null){
+        if (this.router.url === '/index' && value !== null) {
           this.router.navigate(['/cabinet/home'])
         }
-          },
-      error:(e)=> console.log(e)
+      },
+      error: (e) => console.log(e)
 
     })
   }

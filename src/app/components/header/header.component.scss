@@ -1,14 +1,16 @@
 .link-to-home {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-    cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  cursor: pointer;
 }
-.link-to-home:hover{
-    scale: 1.1;
-    transition: 0.3s;
+
+.link-to-home:hover {
+  scale: 1.1;
+  transition: 0.3s;
 }
-.link-to-home:active{
-    color: #FFC107;
-    transition: .3s;
+
+.link-to-home:active {
+  color: #FFC107;
+  transition: .3s;
 }

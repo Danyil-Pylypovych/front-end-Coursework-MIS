@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {IUser, IUserCard} from "../../interfaces";
 import {ActivatedRoute} from "@angular/router";
+
+import {IUserCard} from "../../interfaces";
 import {UserCardService, UserInfoService} from "../../servises";
 
 @Component({
@@ -30,7 +31,7 @@ export class CardListComponent implements OnInit {
     })
   };
 
-  getCards(_id:string): void {
+  getCards(_id: string): void {
     this.userCardService.getAllUserCardsByUserId(_id).subscribe({
       next: (value) => {
         this.userCards = value
