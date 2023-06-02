@@ -23,6 +23,7 @@ const urls = {
   },
   timetable: {
     url: timetable,
+    params: `${timetable}/params`,
     create: `${timetable}/create`,
     change: `${timetable}/change`,
   },

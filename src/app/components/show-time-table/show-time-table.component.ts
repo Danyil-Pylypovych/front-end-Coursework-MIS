@@ -14,6 +14,7 @@ export class ShowTimeTableComponent implements OnInit {
   user: IUser | null;
   timetables: ITimetable[];
   fullTimetable: boolean = true;
+  atAppointment:string | null;
 
   constructor(private userInfoService: UserInfoService,
               private timetableService: TimetableService,
@@ -27,9 +28,10 @@ export class ShowTimeTableComponent implements OnInit {
 
   getData(): void {
     this.userInfoService.getUser().subscribe(value => {
-      value && this.timetableService.getByParams({doctorId: value._id}).subscribe({
+      value && this.timetableService.getAll({doctorId: value._id}).subscribe({
         next: (value) => {
           this.timetables = value
+          console.log(this.timetables)
         },
         error: (e) => console.log(e)
       })
@@ -46,6 +48,7 @@ export class ShowTimeTableComponent implements OnInit {
       }
     )
     dialogRef.componentInstance.dataUpdated.subscribe(() => {
+      this.atAppointment = null
       this.getData();
     });
   };

@@ -3,8 +3,16 @@
   <div class="conteiner" *ngIf="timetable && timetable !== [];else nolist">
     <div class="conteiner-elements" *ngFor="let time of timetable">
       <h4>{{time.day}}</h4>
-      <button class="btn btn-success" [disabled]="time.isChecked"
-              (click)="chooseTime(time)">{{time.time.replace('.', ':')}}</button>
+      <div>
+        <button class="btn btn-success" [disabled]="time.isChecked || timetableId === time._id"
+                (click)="timetableId = time._id"
+                >{{time.time.replace('.', ':')}}
+        </button>
+        <div *ngIf="timetableId === time._id" style="display: flex">
+          <mat-icon (click)="chooseTime(time)" >check</mat-icon>
+          <mat-icon (click)="timetableId = null">cancel</mat-icon>
+        </div>
+      </div>
     </div>
   </div>
 </div>

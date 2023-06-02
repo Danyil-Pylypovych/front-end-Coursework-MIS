@@ -19,8 +19,17 @@
         <h4>{{timetable.day}}</h4>
         <h4>{{timetable.time}}</h4>
         <h3>{{timetable.patientName}}</h3>
-        <button class="btn btn-success" *ngIf="timetable.isChecked" [disabled]="timetable.isCompleted"
-                (click)="createClientCard(timetable)">Прийняти
+        <button class="btn btn-success"
+                *ngIf="timetable.isChecked "
+                [disabled]="timetable.isCompleted || (atAppointment === timetable._id)"
+                (click)="atAppointment = timetable._id">
+          Прийняти
+        </button>
+        <button class="btn btn-success" *ngIf="atAppointment === timetable._id"
+                (click)="atAppointment = null">Скасувати
+        </button>
+        <button class="btn btn-success" *ngIf="atAppointment === timetable._id"
+                (click)="createClientCard(timetable)">Завершити
         </button>
         <hr>
       </div>

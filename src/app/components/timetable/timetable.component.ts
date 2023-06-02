@@ -12,6 +12,7 @@ export class TimetableComponent implements OnInit {
   @Input() doctor: IUser
   timetable: ITimetable[]
   user: IUser | null;
+  timetableId:string | null;
 
   constructor(private timetableService: TimetableService,
               private userInfoService: UserInfoService) {
@@ -37,6 +38,7 @@ export class TimetableComponent implements OnInit {
     time = {...time, isChecked: true, patientName: this.user!.name}
     this.timetable = this.timetable
       .map(value => (value._id === time._id) ? time : value);
+    this.timetableId = null;
     this.timetableService.updateTimetable(this.user!._id, time)
       .subscribe({
         next: (value) => console.log(value),

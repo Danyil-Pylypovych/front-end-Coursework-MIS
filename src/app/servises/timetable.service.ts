@@ -12,11 +12,15 @@ export class TimetableService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getAll(params: Object):Observable<ITimetable[]> {
+    return this.httpClient.post<ITimetable[]>(urls.timetable.url, params);
+  };
+
   createTimetable(timetableObj: Object):Observable<ITimetable> {
     return this.httpClient.post<ITimetable>(urls.timetable.create, timetableObj);
   };
   getByParams(params: Object):Observable<ITimetable[]> {
-    return this.httpClient.post<ITimetable[]>(urls.timetable.url, params);
+    return this.httpClient.post<ITimetable[]>(urls.timetable.params, params);
   };
   updateTimetable(patientId: string, timetable: ITimetable):Observable<ITimetable> {
     return this.httpClient.put<ITimetable>(urls.timetable.change + '/' + patientId, timetable);
