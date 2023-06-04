@@ -7,6 +7,10 @@
   .timetable_date {
     display: flex;
     flex-direction: column;
+
+    mat-hint {
+      color: white;
+    }
   }
 
   mat-card-title {
@@ -33,6 +37,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .data {
+      color: white;
+    }
   }
 }
 ::ng-deep .mat-mdc-raised-button.mat-primary, .mat-mdc-raised-button.mat-primary  {

@@ -11,22 +11,22 @@ interface FoodNode {
 
 const TREE_DATA: FoodNode[] = [
   {
-    name: 'Doctor list speciality',
+    name: 'Список лікарів за спеціальністю',
     children: [
-      {name: 'Pediatrician',},
-      {name: 'Therapist'},
-      {name: 'Family Doctor'},
-      {name: 'Cardiologist'},
-      {name: 'Otolaryngologist'},
-      {name: 'Neurologist'},
-      {name: 'Surgeon'},
+      {name: 'Педіатр',},
+      {name: 'Терапевт'},
+      {name: 'Сімейний лікар'},
+      {name: 'Кардіолог'},
+      {name: 'Отоларинголог'},
+      {name: 'Нерволог'},
+      {name: 'Хірург'},
     ],
   },
   {
-    name: 'Medical card',
+    name: 'Медична картка',
     children: [
-      {name: 'Last visit'},
-      {name: 'All history'},
+      {name: 'Останій візит'},
+      {name: 'Вся історія'},
     ],
   },
 ];
@@ -76,7 +76,7 @@ export class SideBarComponent {
 
   onClickLink(value: string): void {
 
-    if (value === 'Last visit' || value === 'All history') {
+    if (value === 'Останій візит' || value === 'Вся історія') {
       this.router.navigate(['cabinet/cardList'], {queryParams: {period: value}})
     } else {
       this.router.navigate([`cabinet/doctorList/${value.toLowerCase()}`])

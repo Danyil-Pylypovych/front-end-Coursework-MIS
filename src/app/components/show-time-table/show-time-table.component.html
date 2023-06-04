@@ -1,5 +1,5 @@
 <div class="show">
-  <h2>Timetable</h2>
+  <h2>Графік</h2>
   <div class="button-timetable">
     <button class="btn btn-success" (click)="fullTimetable = true">Увесь графік</button>
     <button class="btn btn-success" (click)="fullTimetable = false" style="margin-left: 50px">Записи на прийом</button>
@@ -25,7 +25,7 @@
                 (click)="atAppointment = timetable._id">
           Прийняти
         </button>
-        <button class="btn btn-success" *ngIf="atAppointment === timetable._id"
+        <button class="btn btn-danger" *ngIf="atAppointment === timetable._id"
                 (click)="atAppointment = null">Скасувати
         </button>
         <button class="btn btn-success" *ngIf="atAppointment === timetable._id"
@@ -35,5 +35,4 @@
       </div>
     </div>
   </div>
-
 </div>

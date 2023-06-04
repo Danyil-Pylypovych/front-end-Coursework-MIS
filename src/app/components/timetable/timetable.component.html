@@ -1,5 +1,5 @@
 <div>
-  <h2 class="title">Time List:</h2>
+  <h2 class="title">Список доступного часу:</h2>
   <div class="conteiner" *ngIf="timetable && timetable !== [];else nolist">
     <div class="conteiner-elements" *ngFor="let time of timetable">
       <h4>{{time.day}}</h4>
@@ -17,4 +17,4 @@
   </div>
 </div>
 
-<ng-template #nolist> The time list is empty</ng-template>
+<ng-template #nolist>Не має доступного часу</ng-template>

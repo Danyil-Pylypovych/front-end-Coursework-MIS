@@ -14,10 +14,10 @@ interface FoodNode {
 
 const TREE_DATA: FoodNode[] = [
   {
-    name: 'Doctor list speciality',
+    name: 'Робота з графіками прийому',
     children: [
-      {name: 'Create Timetable',},
-      {name: 'Show Timetable'},
+      {name: 'Створити графік',},
+      {name: 'Показати графік'},
     ],
   },
 ];
@@ -65,9 +65,9 @@ export class SideBarDoctorComponent {
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   onClickLink(value: string): void {
-    if (value === 'Show Timetable') {
+    if (value === 'Показати графік') {
       this.router.navigate(['cabinet/doctorTimetable']);
-    } else if (value === 'Create Timetable') {
+    } else if (value === 'Створити графік') {
       this.dialog.open(CreateTimetableModalComponent, {
           disableClose: true,
           enterAnimationDuration: '1s',

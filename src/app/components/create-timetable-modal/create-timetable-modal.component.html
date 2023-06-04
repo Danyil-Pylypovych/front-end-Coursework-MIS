@@ -2,11 +2,11 @@
   <mat-card>
     <mat-card-title *ngIf="!isDayChecked">Додати дату прийому</mat-card-title>
     <mat-card-title *ngIf="isDayChecked">Додати час прийому</mat-card-title>
-    <mat-error *ngIf="error">This field is required</mat-error>
+    <mat-error *ngIf="error">Це поле обов'язкове</mat-error>
     <mat-card-content>
       <div class="timetable_date" *ngIf="!isDayChecked">
         <mat-form-field>
-          <mat-label>Choose a date</mat-label>
+          <mat-label>Оберіть дату</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="day">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="choose-time" *ngIf="isDayChecked">
-        <h2>{{checkedDay}}</h2>
+        <h2 class="data">{{checkedDay}}</h2>
         <div>
           <button *ngFor="let hour of hoursArr"
                   [value]="hour" mat-button

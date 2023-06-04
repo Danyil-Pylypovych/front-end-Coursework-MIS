@@ -1,5 +1,5 @@
 <div class="title">
-  <h2>Doctors list</h2>
+  <h2>Список лікарів</h2>
 </div>
 <div *ngIf="doctorsBySpecialty">
   <div *ngFor="let doctor of doctorsBySpecialty" class="doctor-item">
@@ -9,7 +9,7 @@
     <h4>{{doctor.gender}}</h4>
     <h4>{{doctor.birth}}</h4>
     <h4>{{doctor.specialty}}</h4>
-    <button class="btn btn-success" (click)="chooseList(doctor._id)">Go to admission timetable</button>
+    <button class="btn btn-success" (click)="chooseList(doctor._id)">Обрати час запису</button>
     <app-timetable [doctor]="doctor" *ngIf="isVisibleList && doctorId === doctor._id"></app-timetable>
     <hr>
   </div>

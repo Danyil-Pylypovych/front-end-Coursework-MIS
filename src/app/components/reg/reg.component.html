@@ -3,7 +3,7 @@
   <section class="checkbox_section">
     <mat-checkbox  formControlName="isDoctor"  class="checkbox_is_doctor">Зареєструватися як лікар</mat-checkbox>
   </section>
-    <input type="text" formControlName="name" name="name" placeholder="Введіть ваше ПІП" class="form-control"><br>
+    <input type="text" formControlName="name" name="name" placeholder="Введіть ваше ПІБ" class="form-control"><br>
     <input type="text" formControlName="birth" name="birth" placeholder="Введіть дату народження" class="form-control"><br>
     <input type="tel" formControlName="phone" name="phone" placeholder="Введіть ваш номер телефону" class="form-control"><br>
     <input type="password" formControlName="password" name="password" placeholder="Введіть ваш пароль" class="form-control"><br>
@@ -14,10 +14,10 @@
     <mat-label>Оберіть стать</mat-label>
     <mat-select  formControlName="gender">
       <mat-option  [value]="'male'">
-        Male
+        Чоловік
       </mat-option>
       <mat-option  [value]="'female'">
-        Female
+        Жінка
       </mat-option>
     </mat-select>
   </mat-form-field>

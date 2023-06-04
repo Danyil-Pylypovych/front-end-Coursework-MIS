@@ -27,7 +27,7 @@ export class CreateClientCardModalComponent {
     this.form = new FormGroup({
       diagnosis: new FormControl('', [Validators.required]),
       prescription: new FormControl('',),
-      referral: new FormControl('', [Validators.maxLength(10), Validators.minLength(10)]),
+      referral: new FormControl('',),
     })
   }
 
